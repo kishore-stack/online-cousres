@@ -1,7 +1,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import api from "../api/client";
+import api from "../api/api";
 import { useAuth } from "../AuthContext";
 import CreateModuleModal from "../components/CreateModuleModal";
 import CreateLessonModal from "../components/CreateLessonModal";

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/client";
+import api from "../api/api";
 import { useNavigate } from "react-router-dom";
 
 type Instructor = {

@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import api from "../api/client";
+import api from "../api/api";
 import AttemptList from "../components/AttemptList";
 import { useNavigate } from "react-router-dom";
 import StatCard from "../components/StatCard";

@@ -4,18 +4,14 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
 
-/* REQUEST INTERCEPTOR */
+/* REQUEST */
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken");
-
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-
+  if (token) config.headers.Authorization = `Bearer ${token}`;
   return config;
 });
 
-/* RESPONSE INTERCEPTOR */
+/* RESPONSE */
 api.interceptors.response.use(
   (res) => res,
   async (error) => {

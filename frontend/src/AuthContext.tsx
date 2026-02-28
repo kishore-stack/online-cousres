@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
-import api from "./api/client";
+import api from "./api/api";
 
 /* ================= TYPES ================= */
 
