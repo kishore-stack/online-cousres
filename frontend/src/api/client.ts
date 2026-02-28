@@ -1,10 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
-/* REQUEST */
+/* REQUEST INTERCEPTOR */
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("accessToken");
 
@@ -15,13 +15,12 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-/* RESPONSE */
+/* RESPONSE INTERCEPTOR */
 api.interceptors.response.use(
   (res) => res,
   async (error) => {
     const originalRequest = error.config;
 
-    /* if access token expired */
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
@@ -29,7 +28,7 @@ api.interceptors.response.use(
         const refreshToken = localStorage.getItem("refreshToken");
 
         const res = await axios.post(
-          "http://localhost:5000/auth/refresh",
+          `${import.meta.env.VITE_API_URL}/auth/refresh`,
           { token: refreshToken }
         );
 
